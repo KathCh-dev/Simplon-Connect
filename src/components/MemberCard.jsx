@@ -1,26 +1,40 @@
+import { useState } from "react";
+import Badge from "./Badge";
 
-function MemberCard({member}){
-    return(
-        <div className="-wbghite p-6 rounded-lg shadow-md border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
-                {member.firstName} {member.lastName}
-            </h3>
+function MemberCard({ member }) {
+  // const [getter, setter] = useState(valeur par défaut);
+  const [toggleBadge, setToggleBadge] = useState(false);
 
-            <img src={member.imageUrl} alt={"Photo de" + member.firstName + " " + member.lastName} className="rounded-full"/>
+  const handleClick = () => {
+    setToggleBadge(!toggleBadge);
+  };
+  return (
+    //la div est le parent qui contient le bloc d'éléments à retourner. On ne peut avoir qu'un bloc !
+    <div
+      className="-wbghite p-6 rounded-lg shadow-md border border-gray-200 bg-gray-400"
+      onClick={handleClick}
+    >
+      {/* Les éléments qui sont contenus dans la div deviennent ses enfants et permet de retourner leurs informations */}
 
-            <br />
+      <h3 className="text-xl font-bold text-red-900 mb-2">
+        {member.firstName} {member.lastName}
+      </h3>
 
-            <div className="mb-3">
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {member.tech}
-                </span>
-            </div>
+      <img
+        src={member.imageUrl}
+        alt={"Photo de" + member.firstName + " " + member.lastName}
+        className="rounded-full"
+      />
 
-            <p className="text-gray-600 italic">
-                {member.message}
-            </p>
-        </div>
-    );
+      <br />
+
+      <Badge tech={member.tech} toggleBadge={toggleBadge} />
+
+      <p className="-wbghite p-6 rounded-lg bg-gray-300 text-red-900 italic bg-opacity-0">
+        {member.message}
+      </p>
+    </div>
+  );
 }
 
-export default MemberCard
+export default MemberCard;
