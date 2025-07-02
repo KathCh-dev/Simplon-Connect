@@ -22,7 +22,7 @@ function MemberCard({ member }) {
 
       <img
         src={member.imageUrl}
-        alt={"Photo de" + member.firstName + " " + member.lastName}
+        alt={"Photo de " + member.firstName + " " + member.lastName}
         className="rounded-full"
       />
 
