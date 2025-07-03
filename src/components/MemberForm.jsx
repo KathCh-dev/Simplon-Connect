@@ -41,64 +41,70 @@ function MemberForm({onSubmit}) {
 
   return (
     <div>
-    <h2>Ajouter un membre</h2>
-    <form onSubmit={handleSubmit}>
-
+    <form onSubmit={handleSubmit} className="-wbghite p-6 rounded-lg shadow-md border border-gray-200 bg-gray-400 text-center justify-self-center">
+      <h2 className="text-xl font-bold text-red-900 mb-2">Ajouter un membre</h2>
+      
       <div>
-        <label>Prénom :</label>
+        <label className="font-bold text-red-900 mb-2">Prénom :</label><br />
         <input
           type="text"
           name="FirstName"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
+          className="border border-gray-800 font-bold"
         />
       </div>
 
       <div>
-        <label>Nom de famille :</label>
+        <label className="font-bold text-red-900 mb-2">Nom de famille :</label><br />
         <input
           type="text"
           name="LastName"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
+          className="border border-gray-800"
         />
       </div>
 
       <div>
-        <label>Technologie préférée :</label>
+        <label className="font-bold text-red-900 mb-2">Technologie préférée :</label><br />
         <input
           type="text"
           name="Tech"
           value={tech}
           onChange={(e) => setTech(e.target.value)}
           required
+          className="border border-gray-800"
         />
       </div>
 
       <div>
-        <label>Message :</label>
+        <label className="font-bold text-red-900 mb-2">Message :</label><br />
         <input
           type="text"
           name="Message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          className="border border-gray-800"
         />
       </div>
 
       <div>
-        <label>Image :</label>
+        <label className="font-bold text-red-900 mb-2">Image :</label><br />
         <input
           type="text"
           name="Image"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
+          className="border border-gray-800"
         />
       </div>
 
-      <button type="submit">Ajouter</button>
+      <button type="submit" className="font-bold text-red-900 mb-2">Ajouter</button>
     </form>
+    <br />
     </div>
   );
 }

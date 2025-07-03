@@ -6,8 +6,11 @@ import { useState } from "react";
 function App() {
   // on déclare une constante qui va utiliser un useState qui contient les informations du localStorage
   const [allMembers, setAllMembers] = useState(JSON.parse(localStorage.getItem("members")))
-  //on set les informations dans le localStorage afin d'ajouter le dernier utilisateur ajouté
-  localStorage.setItem("members", JSON.stringify(members))
+  //on vérifie que le local storage est vide ou non
+  if(!localStorage.getItem(members)){
+    //on set les informations dans le localStorage afin d'ajouter le dernier utilisateur ajouté
+    localStorage.setItem("members", JSON.stringify(members))
+  }
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <h1 className="text-4xl font-bold text-center mb-8 text-red-900">
