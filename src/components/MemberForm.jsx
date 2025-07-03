@@ -83,7 +83,7 @@ function MemberForm({onSubmit}) {
       <div>
         <label className="font-bold text-red-900 mb-2">Message :</label><br />
         <input
-          type="text"
+          type="textarea"
           name="Message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
