@@ -3,6 +3,7 @@ import { members } from "./data/members";
 import MemberForm from "./components/MemberForm";
 import { useState } from "react";
 import DeleteMode from "./components/DeleteMode";
+import ShuffleList from "./components/ShuffleList";
 
 function App() {
   // on déclare une constante qui va utiliser un useState qui contient les informations du localStorage
@@ -51,6 +52,13 @@ function App() {
           onDelete={handleDeleteMember}></MemberCard>
         ))}
       </div>
+
+      <br />
+
+      <div>
+        <ShuffleList></ShuffleList>
+      </div>
+
     </div>
   );
 }
