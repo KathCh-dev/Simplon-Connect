@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Badge from "./Badge";
 
-function MemberCard({ member }) {
+function MemberCard({ member, onDelete }) {
   // const [getter, setter] = useState(valeur par défaut);
   const [toggleBadge, setToggleBadge] = useState(false);
   const [isInverted, setIsInverted] = useState(false);
@@ -12,10 +12,11 @@ function MemberCard({ member }) {
   };
 
   const [hidden, setHidden] = useState(true);
+
   const handleDeleteMember = () => {
     if(confirm('êtes-vous sûr de vouloir supprimer ' + member.firstName + ' ?'))
       //Appeler la fonction qui va supprimer le membre dans le tableau des membres du composant App
-    
+    onDelete(member);
   };
 
   return (

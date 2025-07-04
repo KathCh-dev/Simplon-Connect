@@ -2,7 +2,6 @@ import MemberCard from "./components/MemberCard";
 import { members } from "./data/members";
 import MemberForm from "./components/MemberForm";
 import { useState } from "react";
-import Filter from "./components/DeleteMode";
 import DeleteMode from "./components/DeleteMode";
 
 function App() {
@@ -12,6 +11,17 @@ function App() {
   if(!localStorage.getItem("members")){
     //on set les informations dans le localStorage afin d'ajouter le dernier utilisateur ajouté
     localStorage.setItem("members", JSON.stringify(members))
+  }
+
+  const handleDeleteMember = (memberToDelete) => {
+    const updatedMembers = members.filter(
+      (member) =>
+        member.firstName !== memberToDelete.firstName ||
+        member.lastName !== memberToDelete.lastName  
+    );
+
+    setAllMembers(updatedMembers);
+    localStorage.setItem("members", JSON.stringify(updatedMembers));
   }
 
   return (
@@ -37,7 +47,8 @@ function App() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {/* enclenchement d'une boucle foreach via un .map et création de props avec l'instanciation d'un objet member de type MemberCard */}
         {allMembers.map((member, index) => (
-          <MemberCard member={member} key={index}></MemberCard>
+          <MemberCard member={member} key={index}
+          onDelete={handleDeleteMember}></MemberCard>
         ))}
       </div>
     </div>
